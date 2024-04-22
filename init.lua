@@ -76,6 +76,9 @@ vim.g.maplocalleader = ' '
 
 -- Make line numbers default
 vim.opt.number = true
+-- Line numbers in netrw
+vim.cmd([[let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro']])
+
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
@@ -512,6 +515,7 @@ require('lazy').setup {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
+        solargraph = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -708,7 +712,7 @@ require('lazy').setup {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Load the colorscheme here
-      vim.cmd.colorscheme 'catppuccin-mocha'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
 
       -- You can configure highlights by doing something like
       vim.cmd.hi 'Comment gui=none'

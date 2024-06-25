@@ -92,7 +92,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
---  vim.opt.clipboard = 'unnamedplus'
+ vim.opt.clipboard = 'unnamed'
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -356,6 +356,9 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+      -- Format
+      vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format)
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -517,7 +520,7 @@ require('lazy').setup {
         clangd = {},
         solargraph = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -526,7 +529,7 @@ require('lazy').setup {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
-        --
+        -- eslint = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -602,7 +605,7 @@ require('lazy').setup {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { "prettierd", "prettier" } },
       },
     },
   },
@@ -805,3 +808,6 @@ require('lazy').setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- override eslint 
+vim.api.nvim_create_user_command('E', 'Explore', {})
